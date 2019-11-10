@@ -4,14 +4,28 @@ import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 class AntGame : ApplicationAdapter() {
     private var batch: SpriteBatch? = null
     private var img: Texture? = null
+
+    private val FRAME_COLS = 8
+    private val FRAME_ROWS = 8
+    private var walkAnimation: Animation<TextureRegion>? = null
+
     override fun create() {
         batch = SpriteBatch()
         img = Texture("ant_walk.png")
+
+        val tmp: Array<Array<TextureRegion?>?>? =
+            TextureRegion.split(
+                img,
+                img?.let { it.width / FRAME_COLS } ?: 0,
+                img?.let { it.height / FRAME_ROWS } ?: 0
+            )
     }
 
     override fun render() {
