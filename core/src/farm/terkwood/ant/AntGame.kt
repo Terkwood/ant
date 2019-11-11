@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import ktx.collections.gdxArrayOf
 
 class AntGame : ApplicationAdapter() {
     private var batch: SpriteBatch? = null
@@ -29,8 +30,21 @@ class AntGame : ApplicationAdapter() {
             )
 
         // TODO
-        //val walkFrames: Array<TextureRegion?> = Array(FRAME_COLS * FRAME_ROWS) { i -> tmp[i / FRAME_COLS][i / FRAME_ROWS] }
-        //walkAnimation = Animation<TextureRegion>(0.025f, TODO())
+        // val walkFrames: Array<TextureRegion?> = Array(FRAME_COLS * FRAME_ROWS) { i -> tmp[i / FRAME_COLS][i / FRAME_ROWS] }
+        // walkAnimation = Animation<TextureRegion>(0.025f, TODO())
+        val walkFrames = gdxArrayOf<TextureRegion>()
+        var index = 0
+        if (tmp != null) {
+            for (i in 0..FRAME_ROWS) {
+                for (j in 0..FRAME_COLS) {
+                    if (tmp[i] != null) {
+                        TODO()
+                        // val ti: Array<TextureRegion?>? = tmp[i]
+                        //    walkFrames[index++] = [j]
+                    }
+                }
+            }
+        }
     }
 
     override fun render() {
