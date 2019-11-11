@@ -14,8 +14,7 @@ class AntGame : ApplicationAdapter() {
     private var img: Texture? = null
 
     private val FRAME_COLS = 8
-    private val FRAME_ROWS = 8
-    private val UNUSED_FRAMES = 2
+    private val FRAME_ROWS = 7
     private var walkAnimation: Animation<TextureRegion>? = null
 
     override fun create() {
@@ -29,18 +28,13 @@ class AntGame : ApplicationAdapter() {
                 img?.let { it.height / FRAME_ROWS } ?: 0
             )
 
-        // TODO
-        // val walkFrames: Array<TextureRegion?> = Array(FRAME_COLS * FRAME_ROWS) { i -> tmp[i / FRAME_COLS][i / FRAME_ROWS] }
-        // walkAnimation = Animation<TextureRegion>(0.025f, TODO())
         val walkFrames = gdxArrayOf<TextureRegion>()
         var index = 0
         if (tmp != null) {
             for (i in 0..FRAME_ROWS) {
                 for (j in 0..FRAME_COLS) {
-                    if (tmp[i] != null) {
-                        TODO()
-                        // val ti: Array<TextureRegion?>? = tmp[i]
-                        //    walkFrames[index++] = [j]
+                    if (tmp.size >= index && tmp[index] != null) {
+                        //walkFrames[index++] = tmp[i]!![j]
                     }
                 }
             }
