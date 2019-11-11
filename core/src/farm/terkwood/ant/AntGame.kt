@@ -33,7 +33,7 @@ class AntGame : ApplicationAdapter() {
         if (tmp != null) {
             for (i in 0..FRAME_ROWS) {
                 for (j in 0..FRAME_COLS) {
-                    if (tmp.size >= index && tmp[index] != null) {
+                    if (tmp.size >= i && tmp[index] != null && tmp[index]?.size ?: 0 >= j) {
                         //walkFrames[index++] = tmp[i]!![j]
                     }
                 }
