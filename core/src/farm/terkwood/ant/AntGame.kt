@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.utils.viewport.ScreenViewport
 import ktx.collections.gdxArrayOf
 
 class AntGame : ApplicationAdapter() {
@@ -16,10 +18,15 @@ class AntGame : ApplicationAdapter() {
     private val FRAME_COLS = 8
     private val FRAME_ROWS = 7
     private var walkAnimation: Animation<TextureRegion>? = null
+    private var stage: Stage? = null
 
     override fun create() {
         batch = SpriteBatch()
         img = Texture("ant_walk.png")
+        stage = Stage(ScreenViewport())
+        if (stage != null) {
+            Gdx.input.inputProcessor = stage
+        }
 
         val tmp: Array<Array<TextureRegion?>?>? =
             TextureRegion.split(
@@ -39,6 +46,13 @@ class AntGame : ApplicationAdapter() {
                 }
             }
         }
+
+
+
+    }
+
+    override fun resize(width: Int, height: Int) {
+        stage?.viewport?.update(width, height, true)
     }
 
     override fun render() {
